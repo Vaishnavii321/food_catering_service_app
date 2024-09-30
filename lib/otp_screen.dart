@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class OTPVerificationScreen extends StatelessWidget {
-  // String verificationid;
+  String verificationid;
 
   // Define controllers for each OTP input field
   final TextEditingController otpController1 = TextEditingController();
@@ -16,25 +16,25 @@ class OTPVerificationScreen extends StatelessWidget {
 
   OTPVerificationScreen({
     super.key,
-    // required this.verificationid,
+    required this.verificationid,
   });
 
-  // void verifyOtp(context) async {
-  //   String otp = otpController1.text.trim() + otpController2.text.trim() + otpController3.text.trim() + otpController4.text.trim() + otpController5.text.trim() + otpController6.text.trim();
-  //   try{
-  //     PhoneAuthCredential credential = PhoneAuthProvider.credential(
-  //       verificationId: verificationid,
-  //       smsCode: otp,
-  //     );
+  void verifyOtp(context) async {
+    String otp = otpController1.text.trim() + otpController2.text.trim() + otpController3.text.trim() + otpController4.text.trim() + otpController5.text.trim() + otpController6.text.trim();
+    try{
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: verificationid,
+        smsCode: otp,
+      );
 
-  //     UserCredential userCredential =await FirebaseAuth.instance.signInWithCredential(credential);
-  //     if(userCredential.user != null){
-  //       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-  //     }
-  //   }catch(ex){
-  //     print(ex.toString());
-  //   }
-  // }
+      UserCredential userCredential =await FirebaseAuth.instance.signInWithCredential(credential);
+      if(userCredential.user != null){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      }
+    }catch(ex){
+      print(ex.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,8 +116,7 @@ class OTPVerificationScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  // verifyOtp(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  verifyOtp(context);
                 },
                 child: const Text(
                   'Submit',
