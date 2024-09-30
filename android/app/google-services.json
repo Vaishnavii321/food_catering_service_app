@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1015015852444",
+    "project_id": "phone-auth-e5dce",
+    "storage_bucket": "phone-auth-e5dce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015015852444:android:ef30f2cc77796d52856059",
+        "android_client_info": {
+          "package_name": "com.example.craft_my_plate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjjy2HAFx3zjiId_CxQVO6P0PLpYhq_l8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
