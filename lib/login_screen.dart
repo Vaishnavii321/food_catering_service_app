@@ -11,21 +11,21 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController phoneController = TextEditingController();
 
-  // void sendOTP() async{
-  //   String phone = '+91' + phoneController.text.trim();
-  //   await FirebaseAuth.instance.verifyPhoneNumber(
-  //     phoneNumber: phone,
-  //     verificationCompleted: (credential){},
-  //     verificationFailed: (FirebaseAuthException ex){
-  //       print(ex.toString());
-  //     },
-  //     codeSent: (verificationid, resendtoken){
-  //       Navigator.push(context, MaterialPageRoute(builder: (context) => OTPVerificationScreen(verificationid: verificationid,)));
-  //     },
-  //     codeAutoRetrievalTimeout: (verificationid){},
-  //     timeout: const Duration(seconds: 30),
-  //   );
-  // }
+  void sendOTP() async{
+    String phone = '+91' + phoneController.text.trim();
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: phone,
+      verificationCompleted: (credential){},
+      verificationFailed: (FirebaseAuthException ex){
+        print(ex.toString());
+      },
+      codeSent: (verificationid, resendtoken){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => OTPVerificationScreen(verificationid: verificationid,)));
+      },
+      codeAutoRetrievalTimeout: (verificationid){},
+      timeout: const Duration(seconds: 30),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,8 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        // sendOTP();
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => OTPVerificationScreen()));
+                        sendOTP();
                       },
                       child: Text(
                         'Continue',
